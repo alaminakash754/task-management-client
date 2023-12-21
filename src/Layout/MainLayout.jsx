@@ -3,7 +3,7 @@ import Navbar from "../Pages/Home/Navbar/Navbar";
 
 const MainLayout = () => {
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup')
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup') || location.pathname.includes('dashboard')
     return (
         <div>
              {noHeaderFooter || <Navbar></Navbar>}
