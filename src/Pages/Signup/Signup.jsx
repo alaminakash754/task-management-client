@@ -9,7 +9,7 @@ const Signup = () => {
     const [signUpError, setSignUpError] = useState('');
     const [successSignUp, setSuccessSignUp] = useState('')
     const navigate = useNavigate();
-    const { createUser, logOut } = useContext(AuthContext);
+    const { createUser, logOut, signWithGoogle } = useContext(AuthContext);
 
     const handleSignUp = async(e) => {
         e.preventDefault();
@@ -103,6 +103,17 @@ const Signup = () => {
                 setSignUpError(error.message)
             })
     }
+    const handleGoogleSignIn = () => {
+        signWithGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate('/');
+            })
+
+            .catch(error => {
+                console.error(error)
+            })
+    }
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 mx-auto items-center justify-center text-center mt-10 bg-yellow-50 p-2 gap-5">
@@ -130,7 +141,7 @@ const Signup = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                        <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -142,7 +153,9 @@ const Signup = () => {
                         <button className="btn btn-primary">Sign Up</button>
                     </div>
                 </form>
+               
                 <p>Already have an account? <Link to='/login'><button className="btn btn-link">Login</button></Link></p>
+                <p><button onClick={handleGoogleSignIn} className="btn btn-ghost" >Google</button></p>
                 
             </div>
             {

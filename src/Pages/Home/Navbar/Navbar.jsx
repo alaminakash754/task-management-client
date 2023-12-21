@@ -62,11 +62,11 @@ const Navbar = () => {
 
                     {/* sun icon */}
                     
-                    <p className="btn bg-emerald-700 swap-on fill-current text-yellow-600 border-0 border-b-4 hover:bg-white">Dark</p>
+                    <p className="btn bg-blue-300 swap-on fill-current text-yellow-600 border-0 border-b-4 hover:bg-white">Dark</p>
 
                     {/* moon icon */}
                     
-                    <p className="btn bg-emerald-500 text-yellow-600 swap-off fill-current border-0 border-b-4 hover:bg-white">Light</p>
+                    <p className="btn bg-blue-300 text-yellow-600 swap-off fill-current border-0 border-b-4 hover:bg-white">Light</p>
 
                 </label>
                 {
@@ -74,16 +74,16 @@ const Navbar = () => {
                         <>
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full">
+                                    <div className="w-10 rounded-full ">
                                         <img alt="" src={user.photoURL} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="menu menu-lg dropdown-content mt-2 z-[1] p-1 shadow rounded-box w-52">
+                                <ul tabIndex={0} className="menu menu-lg dropdown-content mt-2 z-[1] shadow rounded-box w-52 bg-blue-300">
                                     <li>
                                         <h3 className="">{user.displayName
                                         }</h3>
                                     </li>
-                                    <li><button onClick={handleSignOut} className="btn btn-sm">Sign out</button></li>
+                                    <li><button onClick={handleSignOut} className="btn-sm mb-2 pb-2">Sign out</button></li>
 
                                 </ul>
                             </div>

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import Service from "./Service";
+import Footer from "./Footer/Footer";
 
 
 const Home = () => {
@@ -9,9 +11,11 @@ const Home = () => {
             <img src="https://i.ibb.co/BBv1jrJ/6976404-4584.jpg" alt="" />
             <Link to='/dashboard'>
                 <div className="absolute top-[400px] left-[570px]">
-                    <button className="btn btn-active btn-accent p-3 border-0 border-b-4 text-red-600 hover:bg-white text-xl">Explore More <FaArrowAltCircleRight></FaArrowAltCircleRight></button>
+                    <button className="btn btn-active  p-3 bg-blue-300 border-0 border-b-4 text-red-600 hover:bg-white text-xl">Explore More <FaArrowAltCircleRight></FaArrowAltCircleRight></button>
                 </div>
             </Link>
+            <Service></Service>
+            <Footer></Footer>
         </div>
     );
 };
