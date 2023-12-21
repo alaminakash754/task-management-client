@@ -34,7 +34,7 @@ export  const router = createBrowserRouter([
         },
         {
             path: '/createTask',
-            element: <CreateTask></CreateTask>
+            element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
         }
       ]
     },
