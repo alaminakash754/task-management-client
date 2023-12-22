@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateTask = () => {
     const {user} = useContext(AuthContext);
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         console.log(data)
@@ -33,6 +35,7 @@ const CreateTask = () => {
                         timer: 1500
                     });
                 }
+                navigate('/dashboard');
             })
            
         }
