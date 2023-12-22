@@ -1,10 +1,41 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../Providers/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const CreateTask = () => {
-    const { register, handleSubmit } = useForm()
+    const {user} = useContext(AuthContext);
+    const { register, handleSubmit, reset } = useForm()
+
     const onSubmit = (data) => {
         console.log(data)
+        if (user && user.email) {
+            const taskItem = {
+                title: data.title,
+                description: data.description,
+                deadline: data.deadline,
+                priority: data.priority,
+                email: user.email,
+            }
+            // 
+            axios.post('http://localhost:5000/userTask', taskItem)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    reset();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${data.title} is added to the menu!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+           
+        }
     };
     return (
         <div>
