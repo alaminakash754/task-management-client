@@ -11,7 +11,7 @@ const Dashboard = () => {
     const { user, logOut } = useContext(AuthContext);
     const userTasks = useLoaderData();
     const [userTask, setUserTask] = useState(userTasks);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSignOut = () => {
         logOut()

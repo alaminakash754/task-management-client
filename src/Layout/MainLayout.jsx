@@ -6,7 +6,7 @@ const MainLayout = () => {
     const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup') || location.pathname.includes('dashboard') || location.pathname.includes('createTask') || location.pathname.includes('editTask')
     return (
         <div>
-             {noHeaderFooter || <Navbar></Navbar>}
+            {noHeaderFooter || <Navbar></Navbar>}
             <Outlet></Outlet>
         </div>
     );
