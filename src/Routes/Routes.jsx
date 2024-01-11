@@ -9,6 +9,7 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import CreateTask from "../components/CreateTask";
+import EditTask from "../components/EditTask";
 
 export  const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ export  const router = createBrowserRouter([
         {
             path:'/dashboard',
             element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/userTask')
+            loader: () => fetch('https://task-management-server-omega-three.vercel.app/userTask')
         },
         {
             path: '/login',
@@ -36,6 +37,11 @@ export  const router = createBrowserRouter([
         {
             path: '/createTask',
             element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
+        },
+        {
+          path:'/editTask/:id',
+          element: <EditTask></EditTask>,
+          loader: ({ params }) => fetch(`https://task-management-server-omega-three.vercel.app/userTask/${params.id}`)
         }
       ]
     },

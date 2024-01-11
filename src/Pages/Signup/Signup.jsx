@@ -67,7 +67,7 @@ const Signup = () => {
                             name,
                             email
                         }
-                        fetch(' http://localhost:5000/user',{
+                        fetch(' https://task-management-server-omega-three.vercel.app/user',{
                     method: 'POST',
                     headers:{
                         'content-type': 'application/json'

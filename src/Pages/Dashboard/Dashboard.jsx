@@ -1,16 +1,29 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link, NavLink, useLoaderData } from "react-router-dom";
+import { Link, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import Tasks from "./Tasks";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
+
 
 
 
 const Dashboard = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const userTasks = useLoaderData();
-    const [userTask, setUserTask] = useState([]);
+    const [userTask, setUserTask] = useState(userTasks);
+    const navigate = useNavigate()
 
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/')
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+    
     
     return (
         <div>
@@ -24,13 +37,21 @@ const Dashboard = () => {
                                 </div>
                             </NavLink>
                         </li>
-                        <li className="border-b-4">
+                        <li className="border-b-4 mb-4">
                             <NavLink to='/'>
                                 <div className="flex items-center gap-3">
                                     <FaHome></FaHome> <h4 className="text-lg font-semibold italic">Home</h4>
                                 </div>
 
                             </NavLink>
+                        </li>
+                        <li className="border-b-4 mb-4">
+                           
+                                <div className="flex items-center gap-3">
+                                    <FaSignOutAlt></FaSignOutAlt> <button onClick={handleSignOut} className="text-lg font-semibold italic">LogOut</button>
+                                </div>
+
+                          
                         </li>
                     </ul>
                 </div>
@@ -43,12 +64,13 @@ const Dashboard = () => {
                     </div>
                     <div className="mt-6 grid sm:grid-cols-1 md:grid-cols-3">
                         <div className="bg-blue-300 ">
-                            <h2 className="text-center text-lg font-semibold italic underline">To Do List : {userTasks.length}</h2>
+                            <h2 className="text-center text-lg font-semibold italic underline">To Do List : {userTask.length}</h2>
                             {
-                                userTasks.map(task => <Tasks key={task._id}
+                                userTask.map(task => <Tasks key={task._id}
                                     task={task}
                                     userTask={userTask}
-                                    setUserTask={setUserTask}>
+                                    setUserTask={setUserTask}
+                                   >
 
                                 </Tasks>)
                             }

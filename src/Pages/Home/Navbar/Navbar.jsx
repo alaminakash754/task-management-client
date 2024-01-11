@@ -33,6 +33,7 @@ const Navbar = () => {
     const navLinks = <>
     <li className="text-yellow-600 font-semibold"><Link to='/'>Home</Link></li>
     <li className="text-yellow-600 font-semibold"><Link to='/dashboard'>Dashboard</Link></li>
+    <li className="text-yellow-600 font-semibold"><Link to='/createTask'>Create Task</Link></li>
    
 </>
     return (
